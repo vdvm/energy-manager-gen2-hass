@@ -1,5 +1,5 @@
 name: Energy Manager (Gen2)
-version: "0.8.0"
+version: "0.8.1"
 slug: energy_manager
 description: Curtails solar production when exporting costs money, maximizing self-consumption
 url: https://github.com/vdvm/energy-manager-gen2-hass
