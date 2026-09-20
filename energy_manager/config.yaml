@@ -1,5 +1,5 @@
 name: Energy Manager (Gen2)
-version: "0.12.6"
+version: "0.12.7"
 slug: energy_manager
 description: Curtails solar production when exporting costs money, maximizing self-consumption
 url: https://github.com/vdvm/energy-manager-gen2-hass
@@ -78,7 +78,7 @@ schema:
       tilt_deg: float?
   measurement:
     adapter: list(homewizard_p1)?
-    stale_after_s: int?
+    stale_after_s: int(1,59)?
     homewizard_p1:
       host: str?
       token: password?
@@ -125,4 +125,4 @@ schema:
         topic_prefix: str?
     recorder:
       path: str?
-      retention_days: int?
+      retention_days: int(1,3650)?
