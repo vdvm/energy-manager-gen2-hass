@@ -10,7 +10,11 @@ Fill in the configuration parameters in the Configuration tab:
 - **Installation:** Timezone and coordinates.
 - **Measurement:** P1 meter IP address and token.
 - **Inverter:** Inverter Modbus TCP IP address and port.
-- **Price:** Contract type, price components and energy source.
+- **Price:** Contract type, price components and energy source. Optional:
+  the gas price – set *Price → gas → source → adapter* to `frank_energie`.
+  Home Assistant then gets `sensor.energy_manager_gas_all_in_price`; choose
+  it as the current price under Settings → Dashboards → Energy → Gas
+  consumption.
 - **Outputs:** MQTT broker connection settings.
 
 ## Limits

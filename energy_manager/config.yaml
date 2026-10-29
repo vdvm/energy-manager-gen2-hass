@@ -1,5 +1,5 @@
 name: Energy Manager (Gen2)
-version: "0.12.8"
+version: "0.13.0"
 slug: energy_manager
 description: Curtails solar production when exporting costs money, maximizing self-consumption
 url: https://github.com/vdvm/energy-manager-gen2-hass
@@ -54,6 +54,8 @@ options:
     energy_tax_eur_kwh_incl_vat: -1.0
     source:
       adapter: frank_energie
+    gas:
+      source: {}
   outputs:
     log_level: info
     home_assistant:
@@ -112,6 +114,9 @@ schema:
     energy_tax_eur_kwh_incl_vat: float?
     source:
       adapter: list(frank_energie)?
+    gas:
+      source:
+        adapter: list(frank_energie)?
   outputs:
     log_level: list(error|warn|info|debug)?
     home_assistant:
