@@ -1,5 +1,5 @@
 name: Energy Manager (Gen2)
-version: "0.13.0"
+version: "0.14.0"
 slug: energy_manager
 description: Curtails solar production when exporting costs money, maximizing self-consumption
 url: https://github.com/vdvm/energy-manager-gen2-hass
@@ -35,6 +35,7 @@ options:
       unit_id: 1
   controller:
     interval: "2s"
+    refresh_interval: "15s"
     on_stop_action: reset_100
     base_load_w: 0
     setpoint:
@@ -95,6 +96,7 @@ schema:
       unit_id: int?
   controller:
     interval: str?
+    refresh_interval: str?
     on_stop_action: list(reset_100|leave)?
     base_load_w: int?
     setpoint:
