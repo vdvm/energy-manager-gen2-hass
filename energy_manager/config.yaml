@@ -1,5 +1,5 @@
 name: Energy Manager (Gen2)
-version: "0.14.3"
+version: "0.15.0"
 slug: energy_manager
 description: Curtails solar production when exporting costs money, maximizing self-consumption
 url: https://github.com/vdvm/energy-manager-gen2-hass
@@ -47,16 +47,18 @@ options:
   pattern_recognition:
     enabled: true
   price:
-    contract: dynamic
-    resolution: hourly
     vat_rate: 0.0
-    import_fee_eur_kwh_incl_vat: -1.0
-    export_fee_eur_kwh_incl_vat: -1.0
-    energy_tax_eur_kwh_incl_vat: -1.0
     source:
       adapter: frank_energie
+      use_components: true
+    electricity:
+      contract: dynamic
+      resolution: hourly
+      import_fee_eur_kwh_incl_vat: -1.0
+      export_fee_eur_kwh_incl_vat: -1.0
+      energy_tax_eur_kwh_incl_vat: -1.0
     gas:
-      source: {}
+      enabled: false
   outputs:
     log_level: info
     home_assistant:
@@ -108,17 +110,20 @@ schema:
   pattern_recognition:
     enabled: bool?
   price:
-    contract: list(fixed|dynamic)?
-    resolution: list(hourly|quarter_hourly)?
     vat_rate: float?
-    import_fee_eur_kwh_incl_vat: float?
-    export_fee_eur_kwh_incl_vat: float?
-    energy_tax_eur_kwh_incl_vat: float?
     source:
       adapter: list(frank_energie)?
+      use_components: bool?
+    electricity:
+      contract: list(fixed|dynamic)?
+      resolution: list(hourly|quarter_hourly)?
+      import_fee_eur_kwh_incl_vat: float?
+      export_fee_eur_kwh_incl_vat: float?
+      energy_tax_eur_kwh_incl_vat: float?
     gas:
-      source:
-        adapter: list(frank_energie)?
+      enabled: bool?
+      import_fee_eur_m3_incl_vat: float?
+      energy_tax_eur_m3_incl_vat: float?
   outputs:
     log_level: list(error|warn|info|debug)?
     home_assistant:

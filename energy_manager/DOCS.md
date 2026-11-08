@@ -10,11 +10,14 @@ Fill in the configuration parameters in the Configuration tab:
 - **Installation:** Timezone and coordinates.
 - **Measurement:** P1 meter IP address and token.
 - **Inverter:** Inverter Modbus TCP IP address and port.
-- **Price:** Contract type, price components and energy source. Optional:
-  the gas price – set *Price → gas → source → adapter* to `frank_energie`.
-  Home Assistant then gets `sensor.energy_manager_gas_all_in_price`; choose
-  it as the current price under Settings → Dashboards → Energy → Gas
-  consumption.
+- **Price:** one price source for electricity and gas. *Price → source →
+  use_components* (on by default) calculates the prices with the components
+  the source delivers; the values you fill in are the fallback and are checked
+  against the source. *Price → electricity* holds the contract type, the
+  resolution and the electricity values. Optional: the gas price—turn on
+  *Price → gas → enabled* and fill in both gas values. Home Assistant then
+  gets `sensor.energy_manager_gas_all_in_price`; choose it as the current
+  price under Settings → Dashboards → Energy → Gas consumption.
 - **Outputs:** MQTT broker connection settings.
 
 ## Limits
@@ -23,7 +26,7 @@ The form and the app refuse values outside these limits, so a typo never
 reaches the control loop:
 
 - **Controller interval:** `1s` to `60s`, or `auto`.
-- **Refresh interval:** `5s` to `15m` – how old AC power, operating state
+- **Refresh interval:** `5s` to `15m`—how old AC power, operating state
   and lifetime energy may get in Home Assistant while the control window
   is open.
 - **Measurement stale after:** 1 to 59 seconds.
